@@ -9,19 +9,29 @@
 /* Begin PBXBuildFile section */
 		01FC71052C22B54F00BC4326 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71042C22B54F00BC4326 /* AppDelegate.swift */; };
 		01FC71072C22B54F00BC4326 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71062C22B54F00BC4326 /* SceneDelegate.swift */; };
-		01FC71092C22B54F00BC4326 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71082C22B54F00BC4326 /* RestaurantViewController.swift */; };
+		01FC71092C22B54F00BC4326 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71082C22B54F00BC4326 /* RestaurantListViewController.swift */; };
 		01FC710E2C22B55100BC4326 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01FC710D2C22B55100BC4326 /* Assets.xcassets */; };
 		01FC71112C22B55100BC4326 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 01FC71102C22B55100BC4326 /* Base */; };
+		01FC711A2C22B6F700BC4326 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 01FC71192C22B6F700BC4326 /* SnapKit */; };
+		01FC711D2C22B70A00BC4326 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 01FC711C2C22B70A00BC4326 /* Kingfisher */; };
+		01FC711F2C22B77500BC4326 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC711E2C22B77500BC4326 /* TabBarViewController.swift */; };
+		01FC71212C22B82E00BC4326 /* RastaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71202C22B82E00BC4326 /* RastaurantMapViewController.swift */; };
+		01FC71232C22B8ED00BC4326 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71222C22B8ED00BC4326 /* Restaurant.swift */; };
+		01FC71252C22B9FC00BC4326 /* RestaurantListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71242C22B9FC00BC4326 /* RestaurantListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01FC71012C22B54F00BC4326 /* SearchRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC71042C22B54F00BC4326 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FC71062C22B54F00BC4326 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		01FC71082C22B54F00BC4326 /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		01FC71082C22B54F00BC4326 /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
 		01FC710D2C22B55100BC4326 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01FC71102C22B55100BC4326 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01FC71122C22B55100BC4326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01FC711E2C22B77500BC4326 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		01FC71202C22B82E00BC4326 /* RastaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RastaurantMapViewController.swift; sourceTree = "<group>"; };
+		01FC71222C22B8ED00BC4326 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		01FC71242C22B9FC00BC4326 /* RestaurantListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01FC711D2C22B70A00BC4326 /* Kingfisher in Frameworks */,
+				01FC711A2C22B6F700BC4326 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +68,11 @@
 			children = (
 				01FC71042C22B54F00BC4326 /* AppDelegate.swift */,
 				01FC71062C22B54F00BC4326 /* SceneDelegate.swift */,
-				01FC71082C22B54F00BC4326 /* RestaurantViewController.swift */,
+				01FC71082C22B54F00BC4326 /* RestaurantListViewController.swift */,
+				01FC71242C22B9FC00BC4326 /* RestaurantListTableViewCell.swift */,
+				01FC71202C22B82E00BC4326 /* RastaurantMapViewController.swift */,
+				01FC71222C22B8ED00BC4326 /* Restaurant.swift */,
+				01FC711E2C22B77500BC4326 /* TabBarViewController.swift */,
 				01FC710D2C22B55100BC4326 /* Assets.xcassets */,
 				01FC710F2C22B55100BC4326 /* LaunchScreen.storyboard */,
 				01FC71122C22B55100BC4326 /* Info.plist */,
@@ -80,6 +96,10 @@
 			dependencies = (
 			);
 			name = SearchRestaurant;
+			packageProductDependencies = (
+				01FC71192C22B6F700BC4326 /* SnapKit */,
+				01FC711C2C22B70A00BC4326 /* Kingfisher */,
+			);
 			productName = SearchRestaurant;
 			productReference = 01FC71012C22B54F00BC4326 /* SearchRestaurant.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +128,10 @@
 				Base,
 			);
 			mainGroup = 01FC70F82C22B54F00BC4326;
+			packageReferences = (
+				01FC71182C22B6F700BC4326 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				01FC711B2C22B70A00BC4326 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 01FC71022C22B54F00BC4326 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,8 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01FC71092C22B54F00BC4326 /* RestaurantViewController.swift in Sources */,
+				01FC711F2C22B77500BC4326 /* TabBarViewController.swift in Sources */,
+				01FC71252C22B9FC00BC4326 /* RestaurantListTableViewCell.swift in Sources */,
+				01FC71092C22B54F00BC4326 /* RestaurantListViewController.swift in Sources */,
+				01FC71232C22B8ED00BC4326 /* Restaurant.swift in Sources */,
 				01FC71052C22B54F00BC4326 /* AppDelegate.swift in Sources */,
+				01FC71212C22B82E00BC4326 /* RastaurantMapViewController.swift in Sources */,
 				01FC71072C22B54F00BC4326 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +315,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +347,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -359,6 +387,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01FC71182C22B6F700BC4326 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		01FC711B2C22B70A00BC4326 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01FC71192C22B6F700BC4326 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01FC71182C22B6F700BC4326 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		01FC711C2C22B70A00BC4326 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01FC711B2C22B70A00BC4326 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01FC70F92C22B54F00BC4326 /* Project object */;
 }

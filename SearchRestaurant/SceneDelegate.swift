@@ -14,10 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let mainVC = RestaurantViewController()
-        let navigationController = UINavigationController(rootViewController: mainVC)
+        let tabVC = TabBarController()
+//        let navigationController = UINavigationController(rootViewController: tabVC)
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = navigationController
+        self.window?.rootViewController = tabVC
         self.window?.makeKeyAndVisible()
     }
     
