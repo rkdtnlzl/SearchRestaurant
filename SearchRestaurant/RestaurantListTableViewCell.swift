@@ -17,14 +17,14 @@ class RestaurantListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViews() {
+    private func configureUI() {
         restaurantImageView.contentMode = .scaleToFill
         restaurantImageView.clipsToBounds = true
         nameLabel.font = UIFont.boldSystemFont(ofSize: 16)

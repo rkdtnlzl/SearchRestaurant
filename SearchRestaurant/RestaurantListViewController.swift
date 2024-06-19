@@ -25,13 +25,16 @@ class RestaurantListViewController: UIViewController {
         configureUI()
     }
     
-    private func configureUI() {
+    func configureUI() {
         view.backgroundColor = .white
         navigationItem.title = "맛집리스트"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         
         view.addSubview(searchBar)
         view.addSubview(tableView)
+        
+        searchBar.backgroundColor = .white
+        
         tableView.register(RestaurantListTableViewCell.self, forCellReuseIdentifier: "RestaurantListTableViewCell")
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
