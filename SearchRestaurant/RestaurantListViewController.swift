@@ -28,6 +28,8 @@ class RestaurantListViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         navigationItem.title = "맛집리스트"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
         view.addSubview(searchBar)
         view.addSubview(tableView)
         tableView.register(RestaurantListTableViewCell.self, forCellReuseIdentifier: "RestaurantListTableViewCell")

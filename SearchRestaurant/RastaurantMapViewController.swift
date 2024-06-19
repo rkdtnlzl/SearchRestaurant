@@ -1,8 +1,8 @@
 //
-// RastaurantMapViewController.swift
-// SearchRestaurant
+//  RastaurantMapViewController.swift
+//  SearchRestaurant
 //
-// Created by 강석호 on 6/19/24.
+//  Created by 강석호 on 6/19/24.
 //
 
 import UIKit
@@ -16,7 +16,22 @@ class RastaurantMapViewController: UIViewController {
     let mapView = MKMapView()
     let restaurantList = RestaurantList().restaurantArray
     let locationButton = UIButton()
-    let filterCollectionView = UICollectionView()
+    var filteredRestaurantList = [Restaurant]()
+    let categories = ["전체"] + Array(Set(RestaurantList().restaurantArray.map { $0.category }))
+    
+    lazy var filterCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 100, height: 40)
+        layout.minimumLineSpacing = 10
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(FilterCell.self, forCellWithReuseIdentifier: FilterCell.identifier)
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +44,11 @@ class RastaurantMapViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         navigationItem.title = "맛집지도"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         
         view.addSubview(mapView)
         view.addSubview(locationButton)
+        view.addSubview(filterCollectionView)
         
         locationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
@@ -45,14 +62,9 @@ class RastaurantMapViewController: UIViewController {
             make.bottom.trailing.equalTo(mapView).inset(10)
             make.width.height.equalTo(40)
         }
-    }
-    
-    func addAnnotations() {
-        for restaurant in restaurantList {
-            let annotation = MKPointAnnotation()
-            annotation.title = restaurant.name
-            annotation.coordinate = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
-            mapView.addAnnotation(annotation)
+        filterCollectionView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(50)
         }
     }
     
@@ -61,9 +73,43 @@ class RastaurantMapViewController: UIViewController {
     }
 }
 
+extension RastaurantMapViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterCell.identifier, for: indexPath) as? FilterCell else {
+            return UICollectionViewCell()
+        }
+        let category = categories[indexPath.item]
+        cell.configure(with: category)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = categories[indexPath.item]
+        if selectedCategory == "전체" {
+            showAllRestaurants()
+        } else {
+            filterRestaurants(by: selectedCategory)
+        }
+    }
+    
+    func filterRestaurants(by category: String) {
+        filteredRestaurantList = restaurantList.filter { $0.category == category }
+        mapView.removeAnnotations(mapView.annotations)
+        addAnnotations(for: filteredRestaurantList)
+    }
+    
+    func showAllRestaurants() {
+        mapView.removeAnnotations(mapView.annotations)
+        addAnnotations(for: restaurantList)
+    }
+}
+
 extension RastaurantMapViewController {
     func checkDeviceLocationAuthorization() {
-        
         DispatchQueue.global().async {
             if CLLocationManager.locationServicesEnabled() {
                 let auth: CLAuthorizationStatus
@@ -92,7 +138,7 @@ extension RastaurantMapViewController {
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
             mapView.showsUserLocation = true
-            addAnnotations()
+            addAnnotations(for: restaurantList)
         default:
             print(status)
         }
@@ -107,7 +153,7 @@ extension RastaurantMapViewController {
     func setRegionToDefaultLocation() {
         let defaultCenter = CLLocationCoordinate2D(latitude: 37.51796776198941, longitude: 126.88659213408837)
         setRegionAndAnnotation(center: defaultCenter)
-        addAnnotations()
+        addAnnotations(for: restaurantList)
     }
     
     func showLocationSettingAlert() {
@@ -119,6 +165,15 @@ extension RastaurantMapViewController {
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func addAnnotations(for restaurants: [Restaurant]) {
+        for restaurant in restaurants {
+            let annotation = MKPointAnnotation()
+            annotation.title = restaurant.name
+            annotation.coordinate = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+            mapView.addAnnotation(annotation)
+        }
     }
 }
 

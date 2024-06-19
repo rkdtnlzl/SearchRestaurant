@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C361842C2300F400D8ED61 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C361832C2300F400D8ED61 /* FilterCell.swift */; };
 		01FC71052C22B54F00BC4326 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71042C22B54F00BC4326 /* AppDelegate.swift */; };
 		01FC71072C22B54F00BC4326 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71062C22B54F00BC4326 /* SceneDelegate.swift */; };
 		01FC71092C22B54F00BC4326 /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC71082C22B54F00BC4326 /* RestaurantListViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01C361832C2300F400D8ED61 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		01FC71012C22B54F00BC4326 /* SearchRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC71042C22B54F00BC4326 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FC71062C22B54F00BC4326 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				01FC71082C22B54F00BC4326 /* RestaurantListViewController.swift */,
 				01FC71242C22B9FC00BC4326 /* RestaurantListTableViewCell.swift */,
 				01FC71202C22B82E00BC4326 /* RastaurantMapViewController.swift */,
+				01C361832C2300F400D8ED61 /* FilterCell.swift */,
 				01FC71222C22B8ED00BC4326 /* Restaurant.swift */,
 				01FC711E2C22B77500BC4326 /* TabBarViewController.swift */,
 				01FC710D2C22B55100BC4326 /* Assets.xcassets */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FC711F2C22B77500BC4326 /* TabBarViewController.swift in Sources */,
+				01C361842C2300F400D8ED61 /* FilterCell.swift in Sources */,
 				01FC71252C22B9FC00BC4326 /* RestaurantListTableViewCell.swift in Sources */,
 				01FC71092C22B54F00BC4326 /* RestaurantListViewController.swift in Sources */,
 				01FC71232C22B8ED00BC4326 /* Restaurant.swift in Sources */,
