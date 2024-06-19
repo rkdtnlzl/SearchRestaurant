@@ -14,6 +14,9 @@ class RastaurantMapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     let mapView = MKMapView()
+    let restaurantList = RestaurantList().restaurantArray
+    let locationButton = UIButton()
+    let filterCollectionView = UICollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,36 @@ class RastaurantMapViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .white
+        navigationItem.title = "맛집지도"
+        
         view.addSubview(mapView)
+        view.addSubview(locationButton)
+        
+        locationButton.setImage(UIImage(systemName: "location.fill"), for: .normal)
+        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
+        locationButton.backgroundColor = .white
+        locationButton.layer.cornerRadius = 20
+        
         mapView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        locationButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(mapView).inset(10)
+            make.width.height.equalTo(40)
+        }
+    }
+    
+    func addAnnotations() {
+        for restaurant in restaurantList {
+            let annotation = MKPointAnnotation()
+            annotation.title = restaurant.name
+            annotation.coordinate = CLLocationCoordinate2D(latitude: restaurant.latitude, longitude: restaurant.longitude)
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    @objc func locationButtonTapped() {
+        checkDeviceLocationAuthorization()
     }
 }
 
@@ -59,22 +88,14 @@ extension RastaurantMapViewController {
             locationManager.requestWhenInUseAuthorization()
         case .denied:
             showLocationSettingAlert()
+            setRegionToDefaultLocation()
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
+            mapView.showsUserLocation = true
+            addAnnotations()
         default:
             print(status)
         }
-    }
-    
-    func showLocationSettingAlert() {
-        let alert = UIAlertController(title: "위치 권한 필요", message: "위치 서비스를 사용하려면 설정에서 위치 권한을 허용해주세요.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "설정으로 이동", style: .default, handler: { _ in
-            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
     
     func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
@@ -82,10 +103,27 @@ extension RastaurantMapViewController {
         print(region)
         mapView.setRegion(region, animated: true)
     }
+    
+    func setRegionToDefaultLocation() {
+        let defaultCenter = CLLocationCoordinate2D(latitude: 37.51796776198941, longitude: 126.88659213408837)
+        setRegionAndAnnotation(center: defaultCenter)
+        addAnnotations()
+    }
+    
+    func showLocationSettingAlert() {
+        let alert = UIAlertController(title: "위치 권한 필요함", message: "설정에서 위치 권한을 허용해주세요.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "설정", style: .default, handler: { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension RastaurantMapViewController: CLLocationManagerDelegate {
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(#function)
         print(locations)
